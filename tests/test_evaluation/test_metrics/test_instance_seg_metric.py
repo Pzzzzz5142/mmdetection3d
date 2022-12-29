@@ -68,8 +68,7 @@ class TestInstanceSegMetric(unittest.TestCase):
                         'sink', 'bathtub', 'garbagebin')
         dataset_meta = dict(
             seg_valid_class_ids=seg_valid_class_ids, classes=class_labels)
-        instance_seg_metric = InstanceSegMetric()
-        instance_seg_metric.dataset_meta = dataset_meta
+        instance_seg_metric = InstanceSegMetric(dataset_meta=dataset_meta)
         instance_seg_metric.process(data_batch, predictions)
         res = instance_seg_metric.evaluate(1)
         self.assertIsInstance(res, dict)
